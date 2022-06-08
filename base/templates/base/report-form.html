@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+  {% load crispy_forms_tags %}
+{% block content %}
+<div class="form-horizontal">
+<form action="" method="POST" class="form-contact">
+
+    {% csrf_token %}
+    {{report_form|crispy}}
+    <button type="submit" class="btn btn-primary mt-3" >search</button>
+
+</form>
+</div>
+{% if no_data %}
+  <div class="alert alert-warning" role="alert">
+    {{no_data}}
+  </div>
+
+{% else %}
+<img src="data:image/png;base64,{{chart|safe}}" id="img">
+{% endif %}
+{% endblock %}
